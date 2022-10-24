@@ -6,7 +6,18 @@
   </nav>
   <router-view />
 </template>
-
+<script>
+export default {
+  data() {
+    return {};
+  },
+  provide() {
+    return {
+      userName: "親で設定した値",
+    };
+  },
+};
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
