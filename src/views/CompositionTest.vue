@@ -6,11 +6,13 @@
     <p>ref:{{ nameRef }}</p>
     <p>reactive:{{ book.title }}</p>
     <p>reactive:{{ book.author[0] }}</p>
+    <p>reactiveToRefs:{{ titleRef }}</p>
+    <p>reactiveToRefs:{{ authorRef[1] }}</p>
   </div>
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { ref, reactive, toRefs } from "vue";
 export default {
   setup() {
     let name = "鈴木";
@@ -21,6 +23,11 @@ export default {
       title: "タイトル",
       author: ["上田", "伊藤"],
     });
+
+    const booktoRefs = reactive({
+      titleRef: "タイトル",
+      authorRef: ["上田2", "伊藤2"],
+    });
     console.log("setup");
     console.log(nameRef);
     console.log(nameRef.value);
@@ -29,6 +36,7 @@ export default {
       age,
       nameRef,
       book,
+      ...toRefs(booktoRefs),
     };
   },
   data() {
