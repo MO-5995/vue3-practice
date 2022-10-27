@@ -8,6 +8,7 @@
     <p>reactive:{{ book.author[0] }}</p>
     <p>reactiveToRefs:{{ titleRef }}</p>
     <p>reactiveToRefs:{{ authorRef[1] }}</p>
+    <button @click="btnClick">クリック</button>
   </div>
 </template>
 
@@ -28,6 +29,11 @@ export default {
       titleRef: "タイトル",
       authorRef: ["上田2", "伊藤2"],
     });
+
+    const btnClick = (e) => {
+      console.log(book.title);
+      console.log(e);
+    };
     console.log("setup");
     console.log(nameRef);
     console.log(nameRef.value);
@@ -37,6 +43,7 @@ export default {
       nameRef,
       book,
       ...toRefs(booktoRefs),
+      btnClick,
     };
   },
   data() {
